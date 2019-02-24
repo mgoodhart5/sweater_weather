@@ -1,4 +1,4 @@
-class DarkSky
+class Weather
   attr_reader :id,
               :current_weather,
               :current_weather_details,
