@@ -10,5 +10,9 @@ describe "Location API" do
     answer = JSON.parse(response.body)["data"]["attributes"]
 
     expect(answer).to be_a(Hash)
+    expect(answer).to have_key("current_weather")
+    expect(answer).to have_key("current_weather_details")
+    expect(answer).to have_key("hourly_weather")
+    expect(answer).to have_key("daily_weather")
   end
 end
