@@ -20,6 +20,8 @@ class DarkSkyService
   def conn
     Faraday.new(:url => "https://api.darksky.net") do |f|
       f.params["exclude"] = "minutely"
+      f.params["exclude"] = "flags"
+      f.params["exclude"] = "offset"
       f.adapter Faraday.default_adapter
     end
   end
