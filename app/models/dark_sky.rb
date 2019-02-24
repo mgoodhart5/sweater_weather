@@ -23,4 +23,12 @@ class DarkSky
     }
   end
 
+  def hourly(data)
+    Time.at(data).strftime("%l %P")
+  end
+
+  def formatted_date(data)
+    Time.at(data).strftime("%-m/%-d")
+  end
+
 end
