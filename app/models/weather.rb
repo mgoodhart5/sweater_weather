@@ -20,10 +20,10 @@ class Weather
   def current_weather_hash
     {
       icon: @currently[:icon],
-      summary: @currently[:summary],
+      summary: @daily[:summary],
       location: @location,
       current_temp: @currently[:temperature],
-      current_time: hourly(@currently[:time]),
+      current_time: hour(@currently[:time]),
       today: formatted_date(@currently[:time]),
       high: @daily[:data].first[:temperatureHigh],
       low: @daily[:data].first[:temperatureLow]
@@ -45,37 +45,21 @@ class Weather
 
   def hourly_weather_hash
     @hourly[:data].map do |hour|
-      {
-        icon: hour[:icon],
-        time: hourly(hour[:time]),
-        temperature: hour[:temperature]
-      }
+      HourlyWeather.new(hour)
     end
   end
 
   def daily_weather_hash
     @daily[:data].map do |day|
-      {
-        icon: day[:icon],
-        day: day_name(day[:time]),
-        temperature_high: day[:temperatureHigh],
-        temperature_low: day[:temperatureLow],
-        precip_probabily: day[:precipProbability],
-        type: day[:precipType]
-      }
+      DailyWeather.new(day)
     end
   end
 
-  def hourly(data)
+  def hour(data)
     Time.at(data).strftime("%l %P")
-  end
-
-  def day_name(data)
-    Time.at(data).strftime("%A")
   end
 
   def formatted_date(data)
     Time.at(data).strftime("%-m/%-d")
   end
-
 end
