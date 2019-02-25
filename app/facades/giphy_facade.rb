@@ -17,11 +17,11 @@ class GiphyFacade
   end
 
   def all_giphys
-    o = giphy_call.giphy_info.flatten.map do |g_info|
-      forecast_call.weather_info[:daily][:data].each do |weather_info|
+    giphy_call.giphy_info.flatten.map do |g_info|
+      forecast_call.weather_info[:daily][:data][0..7].map do |weather_info|
         Giphy.new(g_info[:images][:fixed_width][:url], weather_info[:time], weather_info[:summary])
       end
-    end.flatten
-    binding.pry
+    end.first
+    #this is gross and I am aware of how ridiculous it is.
   end
 end

@@ -13,7 +13,7 @@ class GiphyService
   end
 
   def giphy_info
-    forecast_call.weather_info[:daily][:data].map do |info|
+    forecast_call.weather_info[:daily][:data][0..7].map do |info|
       get_json("/v1/gifs/search?#{info[:icon]}")
     end
   end
