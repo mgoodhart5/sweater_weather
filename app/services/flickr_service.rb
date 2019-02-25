@@ -20,12 +20,7 @@ class FlickrService
     end
   end
 
-  def photo_url
-    "https://farm#{pic_hash[0][:farm]}.staticflickr.com/#{pic_hash[0][:server]}/#{pic_hash[0][:id]}_#{pic_hash[0][:secret]}_b.jpg"
-  end
-
-  def pic_hash
-    #shuffle this so that it is a different picture
-    photo_info
+  def pic_collection
+    @_pic_collection ||= photo_info
   end
 end
