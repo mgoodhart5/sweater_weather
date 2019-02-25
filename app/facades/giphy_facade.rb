@@ -17,7 +17,7 @@ class GiphyFacade
   end
 
   def all_giphys
-    giphy_call.giphy_info.flatten.map do |g_info|
+    o = giphy_call.giphy_info.map do |g_info|
       forecast_call.weather_info[:daily][:data][0..7].map do |weather_info|
         Giphy.new(g_info[:images][:fixed_width][:url], weather_info[:time], weather_info[:summary])
       end

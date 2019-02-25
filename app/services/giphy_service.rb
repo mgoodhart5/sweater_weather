@@ -15,7 +15,7 @@ class GiphyService
   def giphy_info
     forecast_call.weather_info[:daily][:data][0..7].map do |info|
       get_json("/v1/gifs/search?#{info[:icon]}")
-    end
+    end.flatten
   end
 
   def get_json(url)
