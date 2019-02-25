@@ -8,7 +8,7 @@ class BackgroundFacade
   end
 
   def flickr_call
-    FlickrService.new(geo_call.lat, geo_call.lon)
+    @_flickr_call ||= FlickrService.new(geo_call.lat, geo_call.lon)
   end
 
   def photos

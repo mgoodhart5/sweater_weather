@@ -6,7 +6,7 @@ describe FlickrService do
 
     expect(fs).to be_a(FlickrService)
   end
-  it 'returns a a hash of photo information', :vcr do
+  it 'returns a hash of photo information', :vcr do
     fs = FlickrService.new(39.7392358, -104.990251)
 
     expect(fs.photo_info).to be_a(Array)
