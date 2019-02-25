@@ -2,7 +2,10 @@ require 'rails_helper'
 
 describe Giphy do
   it 'exists' do
-    g = Giphy.new(attributes)
+    url = "giphyurl.com"
+    time = "089493021"
+    summary = "Mostly Sunny"
+    g = Giphy.new(url, time, summary)
 
     expect(g).to be_a(Giphy)
   end
@@ -10,7 +13,7 @@ describe Giphy do
     url = "giphyurl.com"
     time = "089493021"
     summary = "Mostly Sunny"
-    g = Giphy.new(url)
+    g = Giphy.new(url, time, summary)
 
     expect(g.url).to eq(url)
     expect(g.time).to eq(time)

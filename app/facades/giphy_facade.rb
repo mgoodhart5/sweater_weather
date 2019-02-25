@@ -17,11 +17,11 @@ class GiphyFacade
   end
 
   def all_giphys
-    giphy_call.giphy_info.map do |giphy_info|
-      forecast_call.weather_info[:daily][:data].map do |weather_info|
-        binding.pry
-        Giphy.new(info[:images][:fixed_width][:url] )
+    o = giphy_call.giphy_info.flatten.map do |g_info|
+      forecast_call.weather_info[:daily][:data].each do |weather_info|
+        Giphy.new(g_info[:images][:fixed_width][:url], weather_info[:time], weather_info[:summary])
       end
-    end
+    end.flatten
+    binding.pry
   end
 end
