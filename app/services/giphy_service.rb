@@ -1,11 +1,16 @@
 class GiphyService
-  attr_reader :id,
-              :time,
-              :summary,
-              :url
 
   def initialize(location)
     @location = location
+  end
+
+  def giphy_info
+    get_json("/v1/gifs/search?")
+  end
+
+  def get_json(url)
+    response = conn.get(url)
+    JSON.parse(response.body, symbolize_names: true)[:data]
   end
 
   def conn
@@ -14,9 +19,5 @@ class GiphyService
       f.params["q"] = "sunny"
       f.adapter Faraday.default_adapter
     end
-
-    response = conn.get("/v1/gifs/search?")
-    JSON.parse(response.body, symbolize_names: true)
-    binding.pry
   end
 end

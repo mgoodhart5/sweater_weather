@@ -17,6 +17,9 @@ class GiphyFacade
   end
 
   def all_giphys
-    giphy_call
+    things = giphy_call.giphy_info.map do |info|
+      Giphy.new(info[:images][:fixed_width][:url])
+    end
+  binding.pry
   end
 end
