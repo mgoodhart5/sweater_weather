@@ -6,7 +6,7 @@ describe GiphyService do
 
     expect(gs).to be_a(GiphyService)
   end
-  it 'returns a hash of giphys', :vcr do
+  it 'returns a giphy that was found from the weather for that hour', :vcr do
     location = "Denver, CO"
     gs = GiphyService.new(location)
 

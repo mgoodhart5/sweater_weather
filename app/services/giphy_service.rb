@@ -12,8 +12,15 @@ class GiphyService
     DarkSkyService.new(geo_call.lat, geo_call.lon)
   end
 
+  def query_information
+    forecast_call.weather_info[:daily][:data].each do |info|
+      info.summary
+      binding.pry
+    end
+  end
+
   def giphy_info
-    get_json("/v1/gifs/search?")
+    get_json("/v1/gifs/search?#{}")
   end
 
   def get_json(url)
