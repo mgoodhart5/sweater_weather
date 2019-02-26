@@ -7,6 +7,7 @@ describe 'user post API' do
     post "/api/v1/users?email=#{email}&password=#{password}&password_confirmation=#{password}"
 
     expect(response).to be_successful
+    expect(status).to eq(201)
     answer = JSON.parse(response.body)["data"]
     expect(answer).to have_key("attributes")
     expect(answer).to have_key("type")
