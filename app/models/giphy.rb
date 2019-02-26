@@ -1,5 +1,7 @@
 class Giphy
-  attr_reader :id, :url, :time, :summary
+  attr_reader :url,
+              :time,
+              :summary
   def initialize(url, time, summary)
     @url = url
     @time = time

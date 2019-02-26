@@ -12,7 +12,7 @@ describe DailyWeather do
     dw = DailyWeather.new(attributes)
 
     expect(dw).to be_a(DailyWeather)
-    expect(dw.day).to eq("Sunday")
+    expect(Time.at(dw.day).strftime("%A")).to eq("Sunday")
     expect(dw.icon).to eq(attributes[:icon])
     expect(dw.temperature_high).to eq(attributes[:temperatureHigh])
     expect(dw.temperature_low).to eq(attributes[:temperatureLow])
