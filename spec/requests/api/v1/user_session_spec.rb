@@ -14,4 +14,13 @@ describe 'user sessions API' do
     expect(answer["data"]).to have_key("type")
     expect(answer["data"]["attributes"]).to have_key("api_key")
   end
+  it 'sends an email and incorrect password and returns error message', :vcr do
+    User.create(email: "m@gmail.com", password: "123", password_confirmation: "123")
+    email = "m@gmail.com"
+    password = 453
+    post "/api/v1/sessions?email=#{email}&password=#{password}"
+
+    expect(response).to be_successful
+    expect(response.body).to eq("Your pasword is WRONG.")
+  end
 end
