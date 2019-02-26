@@ -12,4 +12,13 @@ describe 'user post API' do
     expect(answer).to have_key("type")
     expect(answer["attributes"]).to have_key("api_key")
   end
+  it 'sends an incorrect email and password', :vcr do
+    email = "mary@gmail.com"
+    password = 123
+    password_wrong = 12345
+    post "/api/v1/users?email=#{email}&password=#{password}&password_confirmation=#{password_wrong}"
+
+    expect(response).to be_successful
+    expect(response.body).to eq("You typed the incorrect things, you get nothing!")
+  end
 end
