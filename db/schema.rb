@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2019_02_26_035921) do
 
   create_table "favorites", force: :cascade do |t|
     t.string "location"
+    t.json "current_weather"
     t.bigint "user_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
   end
