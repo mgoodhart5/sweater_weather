@@ -17,4 +17,16 @@ class Api::V1::FavoritesController < ApplicationController
       render json: "Get a damn api key.", status: :unauthorized
     end
   end
+
+  def destroy
+    if params[:api_key]
+      user = User.find_by(api_key: params[:api_key])
+      user.favorites.current_weather
+      favorite = user.favorites.find_by(location: params[:location], user_id: user.id)
+      favorite.destroy
+      render json: user.favorites
+    else
+      render json: "Get a damn api key.", status: :unauthorized
+    end
+  end
 end
