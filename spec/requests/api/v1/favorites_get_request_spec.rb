@@ -21,6 +21,5 @@ describe 'favorite get api' do
     expect(results["data"].first["attributes"]).to have_key("location")
     expect(results["data"].first["attributes"]).to have_key("current_weather")
     expect(results["data"].first["attributes"]["current_weather"]).to have_key("summary")
-
   end
 end
