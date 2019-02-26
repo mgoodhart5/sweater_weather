@@ -5,7 +5,7 @@ class Api::V1::UsersController < ApplicationController
       if user.save
         user.api_key = SecureRandom.hex(10)
         user.save
-        render json: UserSerializer.new(user)
+        render json: UserSerializer.new(user), status: 201
       end
     else
       render json: "You typed the incorrect things, you get nothing!"
