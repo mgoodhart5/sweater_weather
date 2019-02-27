@@ -4,7 +4,7 @@ class Api::V1::FavoritesController < ApplicationController
       user = User.find_by(api_key: params[:api_key])
       user.favorites.create(location: params[:location])
     else
-      render json: "Get a damn api key.", status: :unauthorized
+      render json: "You need an API key!!", status: :unauthorized
     end
   end
 
@@ -14,7 +14,7 @@ class Api::V1::FavoritesController < ApplicationController
       favs = user.favorites.current_weather
       render json: FavoritesSerializer.new(favs)
     else
-      render json: "Get a damn api key.", status: :unauthorized
+      render json: "You need an API key!!", status: :unauthorized
     end
   end
 
@@ -26,7 +26,7 @@ class Api::V1::FavoritesController < ApplicationController
       favorite.destroy
       render json: user.favorites
     else
-      render json: "Get a damn api key.", status: :unauthorized
+      render json: "You need an API key!!", status: :unauthorized
     end
   end
 end
