@@ -5,7 +5,9 @@ class FlickrService
   end
 
   def photo_info
-    get_json("/services/rest/?method=flickr.photos.search&tags=skyline%2Cscenic%2Cphotography&safe_search=1&lat=#{@lat}&lon=#{@lon}&per_page=5&sort=date-taken-desc&format=json&nojsoncallback=1")
+    Rails.cache.fetch("flickr_lat#{@lat}_and_lon#{@lon}", expires_in: 1.month) do
+      get_json("/services/rest/?method=flickr.photos.search&tags=skyline%2Cscenic%2Cphotography&safe_search=1&lat=#{@lat}&lon=#{@lon}&per_page=5&sort=date-taken-desc&format=json&nojsoncallback=1")
+    end
   end
 
   def get_json(url)
