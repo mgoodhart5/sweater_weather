@@ -2,8 +2,8 @@ class Background
   attr_reader :id,
               :title,
               :secret,
-              :server,
-              :farm,
+              :server_id,
+              :farm_id,
               :source_url
   def initialize(attributes)
     @id = attributes[:id]
