@@ -32,6 +32,6 @@ describe 'favorite DELETE api' do
     delete "/api/v1/favorites?location=#{location_1}"
 
     expect(response).to_not be_successful
-    expect(response.body).to eq("Get a damn api key.")
+    expect(response.body).to eq("You need an API key!!")
   end
 end
