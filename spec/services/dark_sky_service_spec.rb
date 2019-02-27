@@ -2,23 +2,21 @@ require 'rails_helper'
 
 describe DarkSkyService do
   it 'exists', :vcr do
-    dss = DarkSkyService.new(39.7392358, -104.990251)
+    location = "Denver, CO"
+    dss = DarkSkyService.new(location)
 
     expect(dss).to be_a(DarkSkyService)
   end
   it 'gets lat and lon from geo service', :vcr do
     location = "Denver, CO"
-    gs = GeoService.new(location)
-
-    dss = DarkSkyService.new(gs.lat, gs.lon)
+    dss = DarkSkyService.new(location)
 
     expect(dss.lat).to eq(39.7392358)
     expect(dss.lon).to eq(-104.990251)
   end
   it 'gets hashes of weather information', :vcr do
     location = "Denver, CO"
-    gs = GeoService.new(location)
-    dss = DarkSkyService.new(gs.lat, gs.lon)
+    dss = DarkSkyService.new(location)
 
     expect(dss.weather_info).to be_a(Hash)
     expect(dss.weather_info).to have_key(:currently)

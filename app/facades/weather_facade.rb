@@ -8,12 +8,8 @@ class WeatherFacade
     @_forecast ||= Weather.new(response, @location)
   end
 
-  def geo_call
-    @_geo_call ||= GeoService.new(@location)
-  end
-
   def dark_sky_call
-    @_dark_sky_call ||= DarkSkyService.new(geo_call.lat, geo_call.lon)
+    @_dark_sky_call ||= DarkSkyService.new(@location)
   end
 
   def response

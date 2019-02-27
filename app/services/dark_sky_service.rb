@@ -1,14 +1,17 @@
 class DarkSkyService
   attr_reader :lat, :lon
 
-  def initialize(lat, lon)
-    @lat = lat
-    @lon = lon
+  def initialize(location)
+    @location = location
+    @lat = geo_call.lat
+    @lon = geo_call.lon
   end
 
   def weather_info
-    key = "#{ENV['DARKSKY_API_KEY']}"
-    get_json("/forecast/#{key}/#{@lat},#{@lon}")
+    Rails.cache.fetch("lat#{@lat}_and_lon#{@lon}", expires_in: 1.year) do
+      key = "#{ENV['DARKSKY_API_KEY']}"
+      get_json("/forecast/#{key}/#{@lat},#{@lon}")
+    end
   end
 
   def get_json(url)
@@ -24,5 +27,9 @@ class DarkSkyService
       f.params["exclude"] = "offset"
       f.adapter Faraday.default_adapter
     end
+  end
+
+  def geo_call
+    @_geo_call ||= GeoService.new(@location)
   end
 end

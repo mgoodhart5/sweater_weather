@@ -21,11 +21,12 @@ class GeoService
   end
 
   def conn
-    Faraday.new(:url => "https://maps.googleapis.com/") do |faraday|
-      faraday.params["key"] = ENV['GOOGLE_API_KEY']
-      faraday.params["address"] = @location
-      faraday.adapter Faraday.default_adapter
+    Rails.cache.fetch("location_#{@location}", expires_in: 1.month) do
+      Faraday.new(:url => "https://maps.googleapis.com/") do |faraday|
+        faraday.params["key"] = ENV['GOOGLE_API_KEY']
+        faraday.params["address"] = @location
+        faraday.adapter Faraday.default_adapter
+      end
     end
   end
-
 end
