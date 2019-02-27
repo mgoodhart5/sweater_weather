@@ -8,10 +8,8 @@ class DarkSkyService
   end
 
   def weather_info
-    Rails.cache.fetch("lat#{@lat}_and_lon#{@lon}", expires_in: 1.year) do
-      key = "#{ENV['DARKSKY_API_KEY']}"
-      get_json("/forecast/#{key}/#{@lat},#{@lon}")
-    end
+    key = "#{ENV['DARKSKY_API_KEY']}"
+    get_json("/forecast/#{key}/#{@lat},#{@lon}")
   end
 
   def get_json(url)
