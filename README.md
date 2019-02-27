@@ -2,6 +2,7 @@
 A Module 3 Turing School solo project built with Ruby on Rails. APIs consumed in this project include the DarkSky, GoogleGeocode, and Flickr. I then created a customized weather api. Currently this project is purely backend except a small welcome page, the front end will be built in the next module. Project expectations are located here: http://backend.turing.io/module3/projects/sweater_weather
 
 [SweaterWeather](https://my-sweater-weather.herokuapp.com)
+
 ![MySweaterWeather](/.readme/dailyweather.jpg)
 ## Getting Started && Prerequisites
 
