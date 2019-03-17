@@ -98,6 +98,9 @@ I used `rspec`, `capybara`, `launchy`, `vcr`, `shoulda-matchers`, and `simplecov
 ## Deployment
 
 The app is deployed on heroku at: [MySweaterWeather](https://my-sweater-weather.herokuapp.com)
+This takes you to the root page. The endpoints are:
+https://my-sweater-weather.herokuapp.com/api/v1/forecast?location=Denver,co or <your city, state here>
+https://my-sweater-weather.herokuapp.com/forecast?backgrounds=Denver,co or <your city, state here>
 
 ## Created with
 
