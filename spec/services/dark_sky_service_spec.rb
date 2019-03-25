@@ -35,7 +35,6 @@ describe DarkSkyService do
     expect(dss.weather_info[:daily]).to have_key(:data)
     expect(dss.weather_info[:daily][:data].first).to have_key(:icon)
     expect(dss.weather_info[:daily][:data].first).to have_key(:precipProbability)
-    # expect(dss.weather_info[:daily][:data].first).to have_key(:precipType)
     expect(dss.weather_info[:daily][:data].first).to have_key(:temperatureHigh)
     expect(dss.weather_info[:daily][:data].first).to have_key(:temperatureLow)
     expect(dss.weather_info[:daily][:data].last).to have_key(:summary)

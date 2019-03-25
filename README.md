@@ -55,28 +55,38 @@ Welcome to the dev environment!
 
 ![MySweaterWeather](/.readme/currentweather.jpg)
 
+## Deployment
+
+The app is deployed on heroku at: [MySweaterWeather](https://my-sweater-weather.herokuapp.com)
+This takes you to the root page.
+
 ## API Endpoints
 
 Current Weather:
 `
 GET https://my-sweater-weather.herokuapp.com/api/v1/forecast?location=<location>
 `
+
 Account Creation (this will return an api key):
 `
 POST https://my-sweater-weather.herokuapp.com/api/v1/users?email=<email>&password=<password>&password_confirmation=<password_confirmation>
 `
+
 Login (this will return an api key):
 `
 POST https://my-sweater-weather.herokuapp.com/api/v1/users?email=<email>&password=<password>
 `
+
 Favoriting Locations:
 `
 POST https://my-sweater-weather.herokuapp.com/api/v1/favorites?location=<location>&api_key=<api_key>
 `
+
 View Favorite Locations:
 `
 GET https://my-sweater-weather.herokuapp.com/api/v1/favorites?api_key=<api_key>
 `
+
 Delete a Favorite Location:
 `
 DELETE https://my-sweater-weather.herokuapp.com/api/v1/favorites?location=<location>&api_key=<api_key>
@@ -84,7 +94,7 @@ DELETE https://my-sweater-weather.herokuapp.com/api/v1/favorites?location=<locat
 
 ## Testing
 
-Your location should be the root directory of the project (`Range_society`).
+Your location should be the root directory of the project (`sweater_weather`).
 
 From the command line run `rspec`
 (This can take a moment)
@@ -93,14 +103,6 @@ From the command line run `rspec`
 `Red` is failing.
 
 I used `rspec`, `capybara`, `launchy`, `vcr`, `shoulda-matchers`, and `simplecov` for testing.
-
-
-## Deployment
-
-The app is deployed on heroku at: [MySweaterWeather](https://my-sweater-weather.herokuapp.com)
-This takes you to the root page. The endpoints are:
-https://my-sweater-weather.herokuapp.com/api/v1/forecast?location=Denver,co or <your city, state here>
-https://my-sweater-weather.herokuapp.com/forecast?backgrounds=Denver,co or <your city, state here>
 
 ## Created with
 
