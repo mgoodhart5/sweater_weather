@@ -17,7 +17,6 @@ class DarkSkyService
     JSON.parse(response.body, symbolize_names: true)
   end
 
-
   def conn
     Faraday.new(:url => "https://api.darksky.net") do |f|
       f.params["exclude"] = "minutely"
